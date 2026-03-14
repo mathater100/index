@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Bro</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+font-family:'Orbitron',sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+
+background:linear-gradient(-45deg,#141e30,#243b55,#000000,#1c1c1c);
+background-size:400% 400%;
+animation:bgmove 12s ease infinite;
+}
+
+@keyframes bgmove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+h1{
+font-size:60px;
+text-shadow:0 0 15px cyan;
+}
+
+.message{
+font-size:22px;
+margin-top:10px;
+}
+
+.balloonCar{
+height:100px;
+width:100px;
+animation:up 10s linear infinite;
+}
+@keyframes up {
+    0%{
+transform:translateY(100vh);
+}
+100%{
+transform:translateY(-100vh);
+}
+}
+
+
+/* CAR */
+
+.car{
+position:absolute;
+bottom:65px;
+width:180px;
+animation:drive 8s linear infinite;
+}
+
+@keyframes drive{
+0%{
+right:20px;
+}
+100%{
+right:110%;
+}
+}
+
+/* CONFETTI */
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100vh);
+}
+100%{
+transform:translateY(100vh);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday Yashu 🎉</h1>
+<img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx">
+<table>
+    <tr>
+        <td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+        <td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+    </tr>
+
+    <tr>
+        <td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+        <td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+       </tr>
+</table>
+<div class="message">
+Wishing you speed, success and a year full of amazing adventures 🔥
+</div>
+
+<img class="car" src="https://static.thenounproject.com/png/3880204-200.png">
+
+
+<script>
+
+for(let i=0;i<40;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.backgroundColor=["red","yellow","blue","green","pink"][Math.floor(Math.random()*5)];
+c.style.animationDuration=3+Math.random()*5+"s";
+document.body.appendChild(c);
+}
+
+</script>
+
+</body>
+</html>
