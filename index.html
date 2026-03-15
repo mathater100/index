@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Birthday Yashu</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Bro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
-
-/* PAGE */
 
 body{
 margin:0;
@@ -28,40 +29,27 @@ background-position:center;
 background-repeat:no-repeat;
 }
 
-/* DARK OVERLAY */
-
-body::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.5);
-z-index:-1;
-}
-
 /* TITLE */
 
 h1{
-font-size:60px;
-text-shadow:0 0 20px cyan;
-margin-bottom:10px;
+font-size:clamp(32px,8vw,60px);
+text-shadow:0 0 15px cyan;
 }
 
 /* MESSAGE */
 
 .message{
-font-size:22px;
+font-size:clamp(16px,4vw,22px);
 margin-top:10px;
+padding:0 20px;
 }
 
 /* BALLOON CARS */
 
 .balloonCar{
-height:90px;
+height:clamp(60px,15vw,100px);
+width:clamp(60px,15vw,100px);
 animation:up 10s linear infinite;
-margin:10px;
 }
 
 @keyframes up{
@@ -69,27 +57,25 @@ margin:10px;
 transform:translateY(100vh);
 }
 100%{
-transform:translateY(-120vh);
+transform:translateY(-100vh);
 }
 }
 
-/* MOVING CAR */
+/* CAR */
 
 .car{
 position:absolute;
-bottom:60px;
-width:160px;
+bottom:65px;
+width:clamp(120px,35vw,180px);
 animation:drive 8s linear infinite;
-color:green;
-height:200px;
 }
 
 @keyframes drive{
 0%{
-left:1500px;
+left:-200px;
 }
 100%{
-left:-110%;
+left:110%;
 }
 }
 
@@ -118,23 +104,27 @@ transform:translateY(100vh);
 
 <h1>Happy Birthday Yashu 🎉</h1>
 
-<div>
-
-<img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx">
-<img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx">
 <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx">
 
-</div>
+<table>
+<tr>
+<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+</tr>
+
+<tr>
+<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
+</tr>
+</table>
 
 <div class="message">
 Wishing you speed, success and a year full of amazing adventures 🔥
 </div>
 
-<img class="car" src="https://static.thenounproject.com/png/3880204-200.png";>
+<img class="car" src="https://static.thenounproject.com/png/3880204-200.png">
 
 <script>
-
-/* CONFETTI GENERATOR */
 
 for(let i=0;i<40;i++){
 let c=document.createElement("div");
