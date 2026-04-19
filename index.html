@@ -15,8 +15,7 @@
 }
 
 body {
-  margin-top:250px;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,21 +24,20 @@ body {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  /* Darker, less bright cyberpunk gradient */
-  background: linear-gradient(135deg, #000000 0%, #0a0a1a 25%, #1a0f2e 50%, #0a0a1a 75%, #000000 100%);
-  background-size: 400% 400%;
-  animation: gradientShift 12s ease infinite;
+  /* Much darker cyberpunk gradient */
+  background: linear-gradient(135deg, #000 0%, #0a0a15 30%, #120a20 60%, #0a0a15 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
   position: relative;
-  padding: 2rem; /* Added body padding */
+  padding: 3rem 2rem; /* More generous padding */
 }
 
 @keyframes gradientShift {
-  0% { background-position: 0% 50%; }
+  0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
-/* STARFIELD */
+/* STARFIELD - Subtler */
 .stars {
   position: absolute;
   top: 0;
@@ -51,224 +49,181 @@ body {
 
 .star {
   position: absolute;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(200, 200, 255, 0.4);
   border-radius: 50%;
-  animation: twinkle 3s infinite;
+  animation: twinkle 4s infinite;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.3); }
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 0.5; transform: scale(1.2); }
 }
 
-/* GLOW EFFECT */
+/* GLOW EFFECT - Softer */
 .glow {
   text-shadow: 
-    0 0 15px rgba(0, 255, 255, 0.7),
-    0 0 30px rgba(0, 255, 255, 0.5),
-    0 0 50px rgba(255, 0, 255, 0.4);
-  animation: pulseGlow 3s ease-in-out infinite alternate;
+    0 0 12px rgba(0, 220, 255, 0.6),
+    0 0 25px rgba(0, 220, 255, 0.4),
+    0 0 40px rgba(150, 0, 255, 0.3);
+  animation: pulseGlow 4s ease-in-out infinite alternate;
 }
 
 @keyframes pulseGlow {
-  from { filter: brightness(1); }
-  to { filter: brightness(1.1); }
+  from { filter: brightness(0.95); }
+  to { filter: brightness(1.05); }
 }
 
 /* TITLE */
 h1 {
-  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-size: clamp(2rem, 6.5vw, 4rem);
   font-weight: 900;
-  margin-bottom: 1.5rem; /* Increased margin */
-  letter-spacing: 0.08em;
+  margin: 0 0 2rem 0; /* More bottom margin */
+  letter-spacing: 0.06em;
   position: relative;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
+  line-height: 1.1;
 }
 
 h1::after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), rgba(255, 0, 255, 0.6), transparent);
-  border-radius: 2px;
-  animation: shimmer 4s infinite;
+  width: 70px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 220, 255, 0.7), transparent);
+  border-radius: 1px;
+  animation: shimmer 5s infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.4; width: 80px; }
-  50% { opacity: 1; width: 160px; }
+  0%, 100% { opacity: 0.3; width: 70px; }
+  50% { opacity: 0.8; width: 140px; }
 }
 
 /* MESSAGE */
 .message {
-  font-size: clamp(1rem, 2.8vw, 1.4rem);
+  font-size: clamp(0.95rem, 2.5vw, 1.3rem);
   font-weight: 500;
-  margin: 2.5rem 3rem 2rem; /* Increased margins */
-  max-width: 85%;
-  line-height: 1.6;
-  opacity: 0.92;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 2rem 2.5rem; /* More padding */
-  border-radius: 25px;
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  margin: 3rem 4rem 2.5rem; /* Generous margins */
+  max-width: 80%;
+  line-height: 1.7;
+  opacity: 0.88;
+  background: rgba(5, 5, 15, 0.8);
+  padding: 2.5rem 3rem; /* More padding */
+  border-radius: 30px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 220, 255, 0.15);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* ENHANCED BALLOON CARS */
+/* BALLOON CARS */
 .balloonCar {
-  height: clamp(85px, 38vw, 135px);
+  height: clamp(80px, 35vw, 130px);
   width: auto;
-  animation: floatUp 14s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-  filter: drop-shadow(0 8px 20px rgba(0,255,255,0.4));
-  transform-origin: bottom;
+  animation: floatUp 16s cubic-bezier(0.22, 0.5, 0.3, 1) infinite;
+  filter: drop-shadow(0 6px 18px rgba(0,220,255,0.3));
 }
 
-.balloonCar:nth-child(odd) { animation-delay: 0s; }
-.balloonCar:nth-child(2n) { animation-delay: -3s; }
-.balloonCar:nth-child(3n) { animation-delay: -6s; }
-.balloonCar:nth-child(4n) { animation-delay: -9s; }
+.balloonCar:nth-child(odd) { animation-delay: -1s; }
+.balloonCar:nth-child(2n) { animation-delay: -4s; }
+.balloonCar:nth-child(3n) { animation-delay: -8s; }
 
 @keyframes floatUp {
-  0% {
-    transform: translateY(100vh) rotate(-3deg) scale(0.7);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-150px) rotate(3deg) scale(1.05);
-    opacity: 0;
-  }
+  0% { transform: translateY(110vh) rotate(-2deg) scale(0.6); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateY(-200px) rotate(2deg) scale(1); opacity: 0; }
 }
 
-/* REVERSED RACING CAR (left to right) */
+/* REVERSED CAR ANIMATION */
 .car {
   position: absolute;
-  bottom: 100px;
-  width: clamp(130px, 36vw, 200px);
+  bottom: 120px;
+  left: 0;
+  width: clamp(120px, 34vw, 190px);
   height: auto;
-  animation: raceReverse 7s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-  filter: drop-shadow(0 12px 25px rgba(255,50,50,0.6));
-  z-index: 10;
+  animation: raceLeftToRight 8s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
+  filter: drop-shadow(0 10px 25px rgba(255, 65, 65, 0.5));
+  z-index: 20;
 }
 
-@keyframes raceReverse {
+@keyframes raceLeftToRight {
   0% {
-    transform: translateX(-30vw) rotate(-1deg);
+    transform: translateX(-25vw) scaleX(0.9) rotateY(0deg);
     opacity: 0;
   }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
   100% {
-    transform: translateX(130vw) rotate(1deg);
+    transform: translateX(125vw) scaleX(1.05) rotateY(180deg);
     opacity: 0;
   }
 }
 
-/* UPGRADED CONFETTI */
+/* CONFETTI */
 .confetti {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  animation: confettiFall 5s linear infinite;
-  box-shadow: 0 0 8px currentColor;
+  animation: confettiFall 6s linear infinite;
 }
 
 @keyframes confettiFall {
-  0% {
-    transform: translateY(-100vh) rotate(0deg);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  92% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(720deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(-120vh) rotateZ(0deg); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateY(120vh) rotateZ(1080deg); opacity: 0; }
 }
 
-/* PARTICLE BURST */
+/* PARTICLES */
 .particle {
   position: absolute;
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
-  pointer-events: none;
-  animation: burst 2.5s ease-out forwards;
+  animation: burst 3s ease-out forwards;
 }
 
 @keyframes burst {
-  0% {
-    transform: scale(0) translate(0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1) translate(var(--dx), var(--dy));
-    opacity: 0;
-  }
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(1) translate(var(--dx), var(--dy)); opacity: 0; }
 }
 
-/* RESPONSIVE GRID */
+/* BALLOON GRID */
 .balloon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 1.2rem;
-  max-width: 450px;
-  margin: 2.5rem 0; /* Increased margin */
-  padding: 0 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 3rem 0; /* More margin */
+  padding: 1rem 3rem;
 }
 
-/* MOBILE OPTIMIZATION */
+/* MOBILE */
 @media (max-width: 480px) {
-  body {
-    padding: 1.5rem;
-  }
-  
-  .message {
-    margin: 2rem 1.5rem;
-    padding: 1.5rem 2rem;
-  }
-  
-  h1 {
-    margin-bottom: 1.2rem;
-  }
-  
-  .balloon-grid {
+  body { padding: 2rem 1.5rem; }
+  .message { margin: 2.5rem 2rem; padding: 2rem 2.5rem; }
+  h1 { margin-bottom: 1.5rem; }
+  .balloon-grid { 
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.8rem;
+    gap: 1rem;
     margin: 2rem 0;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
   }
 }
 </style>
 </head>
 
 <body>
-  <!-- STARFIELD -->
   <div class="stars" id="stars"></div>
 
-  <!-- MAIN TITLE -->
   <h1 class="glow">HAPPY BIRTHDAY YASHU <i class="fas fa-rocket"></i></h1>
 
-  <!-- BALLOON GRID -->
   <div class="balloon-grid">
     <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
     <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
@@ -278,84 +233,68 @@ h1::after {
     <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
   </div>
 
-  <!-- MESSAGE -->
   <div class="message glow">
-    <i class="fas fa-fire" style="color: #ff6b35; margin-right: 0.5rem;"></i>
+    <i class="fas fa-fire" style="color: #ff6b35;"></i>
     Wishing you SPEED, SUCCESS, and a year full of EPIC adventures! 
-    <i class="fas fa-bolt" style="color: #ffd23f; margin-left: 0.5rem;"></i>
+    <i class="fas fa-bolt" style="color: #ffd23f;"></i>
   </div>
 
-  <!-- REVERSED RACING CAR -->
   <img class="car" src="https://static.thenounproject.com/png/3880204-200.png" alt="Racing Car">
 
   <script>
-    // ENHANCED STARFIELD
+    // Stars
     function createStars() {
-      const starsContainer = document.getElementById('stars');
-      for (let i = 0; i < 80; i++) {
+      const container = document.getElementById('stars');
+      for (let i = 0; i < 60; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
-        star.style.width = star.style.height = (Math.random() * 2.5 + 0.8) + 'px';
-        star.style.animationDelay = Math.random() * 3 + 's';
-        star.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
-        starsContainer.appendChild(star);
+        star.style.width = star.style.height = (0.5 + Math.random() * 2) + 'px';
+        star.style.animationDelay = Math.random() * 4 + 's';
+        container.appendChild(star);
       }
     }
 
-    // UPGRADED CONFETTI
+    // Confetti
     function createConfetti() {
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 40; i++) {
         setTimeout(() => {
-          let c = document.createElement("div");
-          c.className = "confetti";
-          c.style.left = Math.random() * 100 + "vw";
-          c.style.animationDelay = Math.random() * 6 + "s";
-          c.style.animationDuration = (4 + Math.random() * 3) + "s";
-          
-          const colors = ['#ff4d6d', '#7b68ee', '#4a90e2', '#00d4aa', '#ffaa00', '#ff6347'];
-          c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '20% 80% 80% 20%';
-          
+          const c = document.createElement('div');
+          c.className = 'confetti';
+          c.style.left = Math.random() * 100 + 'vw';
+          c.style.animationDelay = Math.random() * 8 + 's';
+          c.style.animationDuration = 5 + Math.random() * 4 + 's';
+          c.style.background = ['#ff4d6d', '#7b68ee', '#4a90e2', '#00d4aa', '#ffaa00'][Math.floor(Math.random() * 5)];
           document.body.appendChild(c);
-          
-          setTimeout(() => c.remove(), 10000);
-        }, i * 120);
+          setTimeout(() => c.remove(), 14000);
+        }, i * 150);
       }
     }
 
-    // PARTICLE BURST ON LOAD
+    // Particles
     function createParticleBurst(x, y) {
-      for (let i = 0; i < 16; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-        particle.style.backgroundColor = ['#ff4d6d', '#7b68ee', '#4a90e2', '#00d4aa'][Math.floor(Math.random() * 4)];
-        particle.style.setProperty('--dx', (Math.random() - 0.5) * 150 + 'px');
-        particle.style.setProperty('--dy', (Math.random() - 0.5) * 150 + 'px');
-        document.body.appendChild(particle);
-        
-        setTimeout(() => particle.remove(), 2500);
+      for (let i = 0; i < 12; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = x + 'px';
+        p.style.top = y + 'px';
+        p.style.background = ['#ff4d6d', '#7b68ee', '#4a90e2'][Math.floor(Math.random() * 3)];
+        p.style.setProperty('--dx', (Math.random() - 0.5) * 120 + 'px');
+        p.style.setProperty('--dy', (Math.random() - 0.5) * 120 + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 3000);
       }
     }
 
-    // INIT
+    // Initialize
     window.addEventListener('load', () => {
       createStars();
       createConfetti();
-      
-      setTimeout(() => {
-        createParticleBurst(window.innerWidth / 2, window.innerHeight / 2);
-      }, 600);
-      
-      setInterval(() => {
-        createParticleBurst(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
-      }, 4000);
+      setTimeout(() => createParticleBurst(innerWidth/2, innerHeight/2), 800);
+      setInterval(() => createParticleBurst(Math.random()*innerWidth, Math.random()*innerHeight), 5000);
     });
-
-    setInterval(createConfetti, 10000);
+    setInterval(createConfetti, 12000);
   </script>
 </body>
 </html>
