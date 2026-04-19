@@ -2,140 +2,349 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday Bro</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<title>Happy Birthday Yashu 🚀</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-body{
-margin:0;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-font-family:'Orbitron',sans-serif;
-color:white;
-text-align:center;
-overflow:hidden;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Orbitron', 'Exo 2', sans-serif;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 25%, #330066 50%, #1a0033 75%, #0c0c0c 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  position: relative;
+}
 
-background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIayRvS_FHtu6_DGAzjgmfsUD-7rEqvTabzw&s");
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* STARFIELD */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle 2s infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* GLOW EFFECT */
+.glow {
+  text-shadow: 
+    0 0 20px #00ffff,
+    0 0 40px #00ffff,
+    0 0 60px #00ffff,
+    0 0 80px #ff00ff,
+    0 0 100px #ff00ff;
+  animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from { filter: hue-rotate(0deg) brightness(1); }
+  to { filter: hue-rotate(60deg) brightness(1.2); }
 }
 
 /* TITLE */
+h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  position: relative;
+}
 
-h1{
-font-size:clamp(32px,8vw,60px);
-text-shadow:0 0 15px cyan;
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent);
+  border-radius: 2px;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.5; width: 100px; }
+  50% { opacity: 1; width: 200px; }
 }
 
 /* MESSAGE */
-
-.message{
-font-size:clamp(16px,4vw,22px);
-margin-top:10px;
-padding:0 20px;
+.message {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-weight: 500;
+  margin: 2rem 2rem 1rem;
+  max-width: 90%;
+  line-height: 1.6;
+  opacity: 0.95;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 255, 0.3);
 }
 
-/* BALLOON CARS */
-
-.balloonCar{
-height:clamp(100px,45vw,150px);
-width:clamp(75px,20vw,110px);
-animation:up 10s linear infinite;
+/* ENHANCED BALLOON CARS */
+.balloonCar {
+  height: clamp(90px, 40vw, 140px);
+  width: auto;
+  animation: floatUp 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  filter: drop-shadow(0 10px 20px rgba(0,255,255,0.5));
+  transform-origin: bottom;
 }
 
-@keyframes up{
-0%{
-transform:translateY(100vh);
-}
-100%{
-transform:translateY(-100vh);
-}
+.balloonCar:nth-child(odd) { animation-delay: 0s; }
+.balloonCar:nth-child(even) { animation-delay: -2s; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(-5deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120px) rotate(5deg) scale(1.1);
+    opacity: 0;
+  }
 }
 
-/* CAR */
-
-.car{
-position:absolute;
-bottom:65px;
-width:clamp(120px,35vw,180px);
-animation:drive 8s linear infinite;
+/* RACING CAR */
+.car {
+  position: absolute;
+  bottom: 80px;
+  width: clamp(140px, 38vw, 220px);
+  height: auto;
+  animation: race 6s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  filter: drop-shadow(0 15px 30px rgba(255,50,50,0.8));
+  z-index: 10;
 }
 
-@keyframes drive{
-0%{
-right:200px;
-}
-100%{
-left:120%;
-}
-}
-
-/* CONFETTI */
-
-.confetti{
-position:absolute;
-width:10px;
-height:10px;
-animation:fall linear infinite;
-}
-
-@keyframes fall{
-0%{
-transform:translateY(-100vh);
-}
-100%{
-transform:translateY(100vh);
-}
+@keyframes race {
+  0% {
+    transform: translateX(-200px) rotate(-2deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120vw) rotate(2deg);
+    opacity: 0;
+  }
 }
 
+/* UPGRADED CONFETTI */
+.confetti {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  animation: confettiFall 4s linear infinite;
+  box-shadow: 0 0 10px currentColor;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* PARTICLE BURST */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: burst 2s ease-out forwards;
+}
+
+@keyframes burst {
+  0% {
+    transform: scale(0) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+
+/* RESPONSIVE GRID */
+.balloon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 400px;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+/* MOBILE OPTIMIZATION */
+@media (max-width: 480px) {
+  .message {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .balloon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
 </style>
 </head>
 
 <body>
+  <!-- STARFIELD -->
+  <div class="stars" id="stars"></div>
 
-<h1>Happy Birthday Yashu 🎉</h1>
+  <!-- MAIN TITLE -->
+  <h1 class="glow">HAPPY BIRTHDAY YASHU <i class="fas fa-rocket"></i></h1>
 
-<img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx">
+  <!-- BALLOON GRID -->
+  <div class="balloon-grid">
+    <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
+    <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
+    <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
+    <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
+    <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
+    <img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx" alt="Balloon Car">
+  </div>
 
-<table>
-<tr>
-<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
-<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
-</tr>
+  <!-- MESSAGE -->
+  <div class="message glow">
+    <i class="fas fa-fire" style="color: #ff6b35; margin-right: 0.5rem;"></i>
+    Wishing you SPEED, SUCCESS, and a year full of EPIC adventures! 
+    <i class="fas fa-bolt" style="color: #ffd23f; margin-left: 0.5rem;"></i>
+  </div>
 
-<tr>
-<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
-<td><img class="balloonCar" src="https://www.gstatic.com/android/keyboard/emojikitchen/20241021/u1f388/u1f388_u1f3ce-ufe0f.png?fbx"></td>
-</tr>
-</table>
+  <!-- RACING CAR -->
+  <img class="car" src="https://static.thenounproject.com/png/3880204-200.png" alt="Racing Car">
 
-<div class="message">
-Wishing you speed, success and a year full of amazing adventures 🔥
-</div>
+  <script>
+    // ENHANCED STARFIELD
+    function createStars() {
+      const starsContainer = document.getElementById('stars');
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+        star.style.animationDelay = Math.random() * 2 + 's';
+        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        starsContainer.appendChild(star);
+      }
+    }
 
-<img class="car" src="https://static.thenounproject.com/png/3880204-200.png">
+    // UPGRADED CONFETTI
+    function createConfetti() {
+      for (let i = 0; i < 60; i++) {
+        setTimeout(() => {
+          let c = document.createElement("div");
+          c.className = "confetti";
+          c.style.left = Math.random() * 100 + "vw";
+          c.style.animationDelay = Math.random() * 5 + "s";
+          c.style.animationDuration = (3 + Math.random() * 4) + "s";
+          
+          const colors = ['#ff006e', '#8338ec', '#3a86ff', '#06ffa5', '#ffbe0b', '#fb5607'];
+          c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0%';
+          
+          document.body.appendChild(c);
+          
+          // Remove confetti after animation
+          setTimeout(() => c.remove(), 8000);
+        }, i * 100);
+      }
+    }
 
-<script>
+    // PARTICLE BURST ON LOAD
+    function createParticleBurst(x, y) {
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.backgroundColor = ['#ff006e', '#8338ec', '#3a86ff', '#06ffa5'][Math.floor(Math.random() * 4)];
+        particle.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
+        particle.style.setProperty('--dy', (Math.random() - 0.5) * 200 + 'px');
+        document.body.appendChild(particle);
+        
+        setTimeout(() => particle.remove(), 2000);
+      }
+    }
 
-for(let i=0;i<40;i++){
-let c=document.createElement("div");
-c.className="confetti";
-c.style.left=Math.random()*100+"vw";
-c.style.backgroundColor=["red","yellow","blue","green","pink"][Math.floor(Math.random()*5)];
-c.style.animationDuration=3+Math.random()*5+"s";
-document.body.appendChild(c);
-}
+    // INIT
+    window.addEventListener('load', () => {
+      createStars();
+      createConfetti();
+      
+      // Initial particle burst
+      setTimeout(() => {
+        createParticleBurst(window.innerWidth / 2, window.innerHeight / 2);
+      }, 500);
+      
+      // Continuous effects
+      setInterval(() => {
+        createParticleBurst(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
+      }, 3000);
+    });
 
-</script>
-
+    // Continuous confetti waves
+    setInterval(createConfetti, 8000);
+  </script>
 </body>
 </html>
