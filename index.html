@@ -24,10 +24,12 @@ body {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 25%, #330066 50%, #1a0033 75%, #0c0c0c 100%);
+  /* Darker, less bright cyberpunk gradient */
+  background: linear-gradient(135deg, #000000 0%, #0a0a1a 25%, #1a0f2e 50%, #0a0a1a 75%, #000000 100%);
   background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
+  animation: gradientShift 12s ease infinite;
   position: relative;
+  padding: 2rem; /* Added body padding */
 }
 
 @keyframes gradientShift {
@@ -48,117 +50,119 @@ body {
 
 .star {
   position: absolute;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;
-  animation: twinkle 2s infinite;
+  animation: twinkle 3s infinite;
 }
 
 @keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.5); }
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.3); }
 }
 
 /* GLOW EFFECT */
 .glow {
   text-shadow: 
-    0 0 20px #00ffff,
-    0 0 40px #00ffff,
-    0 0 60px #00ffff,
-    0 0 80px #ff00ff,
-    0 0 100px #ff00ff;
-  animation: pulseGlow 2s ease-in-out infinite alternate;
+    0 0 15px rgba(0, 255, 255, 0.7),
+    0 0 30px rgba(0, 255, 255, 0.5),
+    0 0 50px rgba(255, 0, 255, 0.4);
+  animation: pulseGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes pulseGlow {
-  from { filter: hue-rotate(0deg) brightness(1); }
-  to { filter: hue-rotate(60deg) brightness(1.2); }
+  from { filter: brightness(1); }
+  to { filter: brightness(1.1); }
 }
 
 /* TITLE */
 h1 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
   font-weight: 900;
-  margin-bottom: 1rem;
-  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem; /* Increased margin */
+  letter-spacing: 0.08em;
   position: relative;
+  padding: 0 1rem;
 }
 
 h1::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -15px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, #00ffff, #ff00ff, transparent);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.8), rgba(255, 0, 255, 0.6), transparent);
   border-radius: 2px;
-  animation: shimmer 3s infinite;
+  animation: shimmer 4s infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.5; width: 100px; }
-  50% { opacity: 1; width: 200px; }
+  0%, 100% { opacity: 0.4; width: 80px; }
+  50% { opacity: 1; width: 160px; }
 }
 
 /* MESSAGE */
 .message {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  font-size: clamp(1rem, 2.8vw, 1.4rem);
   font-weight: 500;
-  margin: 2rem 2rem 1rem;
-  max-width: 90%;
+  margin: 2.5rem 3rem 2rem; /* Increased margins */
+  max-width: 85%;
   line-height: 1.6;
-  opacity: 0.95;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 1.5rem 2rem;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 255, 255, 0.3);
+  opacity: 0.92;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem 2.5rem; /* More padding */
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* ENHANCED BALLOON CARS */
 .balloonCar {
-  height: clamp(90px, 40vw, 140px);
+  height: clamp(85px, 38vw, 135px);
   width: auto;
-  animation: floatUp 12s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
-  filter: drop-shadow(0 10px 20px rgba(0,255,255,0.5));
+  animation: floatUp 14s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  filter: drop-shadow(0 8px 20px rgba(0,255,255,0.4));
   transform-origin: bottom;
 }
 
 .balloonCar:nth-child(odd) { animation-delay: 0s; }
-.balloonCar:nth-child(even) { animation-delay: -2s; }
+.balloonCar:nth-child(2n) { animation-delay: -3s; }
+.balloonCar:nth-child(3n) { animation-delay: -6s; }
+.balloonCar:nth-child(4n) { animation-delay: -9s; }
 
 @keyframes floatUp {
   0% {
-    transform: translateY(100vh) rotate(-5deg) scale(0.8);
+    transform: translateY(100vh) rotate(-3deg) scale(0.7);
     opacity: 0;
   }
-  10% {
+  8% {
     opacity: 1;
   }
-  90% {
+  92% {
     opacity: 1;
   }
   100% {
-    transform: translateY(-120px) rotate(5deg) scale(1.1);
+    transform: translateY(-150px) rotate(3deg) scale(1.05);
     opacity: 0;
   }
 }
 
-/* RACING CAR */
+/* REVERSED RACING CAR (left to right) */
 .car {
   position: absolute;
-  bottom: 80px;
-  width: clamp(140px, 38vw, 220px);
+  bottom: 100px;
+  width: clamp(130px, 36vw, 200px);
   height: auto;
-  animation: race 6s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-  filter: drop-shadow(0 15px 30px rgba(255,50,50,0.8));
+  animation: raceReverse 7s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+  filter: drop-shadow(0 12px 25px rgba(255,50,50,0.6));
   z-index: 10;
 }
 
-@keyframes race {
+@keyframes raceReverse {
   0% {
-    transform: translateX(-200px) rotate(-2deg);
+    transform: translateX(-30vw) rotate(-1deg);
     opacity: 0;
   }
   10% {
@@ -168,7 +172,7 @@ h1::after {
     opacity: 1;
   }
   100% {
-    transform: translateX(120vw) rotate(2deg);
+    transform: translateX(130vw) rotate(1deg);
     opacity: 0;
   }
 }
@@ -176,11 +180,11 @@ h1::after {
 /* UPGRADED CONFETTI */
 .confetti {
   position: absolute;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  animation: confettiFall 4s linear infinite;
-  box-shadow: 0 0 10px currentColor;
+  animation: confettiFall 5s linear infinite;
+  box-shadow: 0 0 8px currentColor;
 }
 
 @keyframes confettiFall {
@@ -188,10 +192,10 @@ h1::after {
     transform: translateY(-100vh) rotate(0deg);
     opacity: 0;
   }
-  10% {
+  8% {
     opacity: 1;
   }
-  90% {
+  92% {
     opacity: 1;
   }
   100% {
@@ -203,11 +207,11 @@ h1::after {
 /* PARTICLE BURST */
 .particle {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   pointer-events: none;
-  animation: burst 2s ease-out forwards;
+  animation: burst 2.5s ease-out forwards;
 }
 
 @keyframes burst {
@@ -224,23 +228,33 @@ h1::after {
 /* RESPONSIVE GRID */
 .balloon-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1rem;
-  max-width: 400px;
-  margin: 2rem 0;
-  padding: 0 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 1.2rem;
+  max-width: 450px;
+  margin: 2.5rem 0; /* Increased margin */
+  padding: 0 2rem;
 }
 
 /* MOBILE OPTIMIZATION */
 @media (max-width: 480px) {
+  body {
+    padding: 1.5rem;
+  }
+  
   .message {
-    padding: 1rem;
-    margin: 1rem;
+    margin: 2rem 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+  
+  h1 {
+    margin-bottom: 1.2rem;
   }
   
   .balloon-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 0.8rem;
+    margin: 2rem 0;
+    padding: 0 1rem;
   }
 }
 </style>
@@ -270,60 +284,59 @@ h1::after {
     <i class="fas fa-bolt" style="color: #ffd23f; margin-left: 0.5rem;"></i>
   </div>
 
-  <!-- RACING CAR -->
+  <!-- REVERSED RACING CAR -->
   <img class="car" src="https://static.thenounproject.com/png/3880204-200.png" alt="Racing Car">
 
   <script>
     // ENHANCED STARFIELD
     function createStars() {
       const starsContainer = document.getElementById('stars');
-      for (let i = 0; i < 100; i++) {
+      for (let i = 0; i < 80; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         star.style.left = Math.random() * 100 + '%';
         star.style.top = Math.random() * 100 + '%';
-        star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
-        star.style.animationDelay = Math.random() * 2 + 's';
-        star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        star.style.width = star.style.height = (Math.random() * 2.5 + 0.8) + 'px';
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
         starsContainer.appendChild(star);
       }
     }
 
     // UPGRADED CONFETTI
     function createConfetti() {
-      for (let i = 0; i < 60; i++) {
+      for (let i = 0; i < 50; i++) {
         setTimeout(() => {
           let c = document.createElement("div");
           c.className = "confetti";
           c.style.left = Math.random() * 100 + "vw";
-          c.style.animationDelay = Math.random() * 5 + "s";
-          c.style.animationDuration = (3 + Math.random() * 4) + "s";
+          c.style.animationDelay = Math.random() * 6 + "s";
+          c.style.animationDuration = (4 + Math.random() * 3) + "s";
           
-          const colors = ['#ff006e', '#8338ec', '#3a86ff', '#06ffa5', '#ffbe0b', '#fb5607'];
+          const colors = ['#ff4d6d', '#7b68ee', '#4a90e2', '#00d4aa', '#ffaa00', '#ff6347'];
           c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0%';
+          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '20% 80% 80% 20%';
           
           document.body.appendChild(c);
           
-          // Remove confetti after animation
-          setTimeout(() => c.remove(), 8000);
-        }, i * 100);
+          setTimeout(() => c.remove(), 10000);
+        }, i * 120);
       }
     }
 
     // PARTICLE BURST ON LOAD
     function createParticleBurst(x, y) {
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 16; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.left = x + 'px';
         particle.style.top = y + 'px';
-        particle.style.backgroundColor = ['#ff006e', '#8338ec', '#3a86ff', '#06ffa5'][Math.floor(Math.random() * 4)];
-        particle.style.setProperty('--dx', (Math.random() - 0.5) * 200 + 'px');
-        particle.style.setProperty('--dy', (Math.random() - 0.5) * 200 + 'px');
+        particle.style.backgroundColor = ['#ff4d6d', '#7b68ee', '#4a90e2', '#00d4aa'][Math.floor(Math.random() * 4)];
+        particle.style.setProperty('--dx', (Math.random() - 0.5) * 150 + 'px');
+        particle.style.setProperty('--dy', (Math.random() - 0.5) * 150 + 'px');
         document.body.appendChild(particle);
         
-        setTimeout(() => particle.remove(), 2000);
+        setTimeout(() => particle.remove(), 2500);
       }
     }
 
@@ -332,19 +345,16 @@ h1::after {
       createStars();
       createConfetti();
       
-      // Initial particle burst
       setTimeout(() => {
         createParticleBurst(window.innerWidth / 2, window.innerHeight / 2);
-      }, 500);
+      }, 600);
       
-      // Continuous effects
       setInterval(() => {
         createParticleBurst(Math.random() * window.innerWidth, Math.random() * window.innerHeight);
-      }, 3000);
+      }, 4000);
     });
 
-    // Continuous confetti waves
-    setInterval(createConfetti, 8000);
+    setInterval(createConfetti, 10000);
   </script>
 </body>
 </html>
