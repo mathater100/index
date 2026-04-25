@@ -24,12 +24,11 @@ body {
   color: #fff;
   text-align: center;
   overflow: hidden;
-  /* Much darker cyberpunk gradient */
   background: linear-gradient(135deg, #000 0%, #0a0a15 30%, #120a20 60%, #0a0a15 100%);
   background-size: 300% 300%;
   animation: gradientShift 15s ease infinite;
   position: relative;
-  padding: 3rem 2rem; /* More generous padding */
+  padding: 3rem 2rem;
 }
 
 @keyframes gradientShift {
@@ -50,11 +49,10 @@ body {
   to { filter: brightness(1.05); }
 }
 
-/* TITLE */
 h1 {
   font-size: clamp(2rem, 6.5vw, 4rem);
   font-weight: 900;
-  margin: 0 0 2rem 0; /* More bottom margin */
+  margin: 0 0 2rem 0;
   letter-spacing: 0.06em;
   position: relative;
   padding: 0 1.5rem;
@@ -79,16 +77,15 @@ h1::after {
   50% { opacity: 0.8; width: 140px; }
 }
 
-/* MESSAGE */
 .message {
   font-size: clamp(0.95rem, 2.5vw, 1.3rem);
   font-weight: 500;
-  margin: 3rem 4rem 2.5rem; /* Generous margins */
+  margin: 3rem 4rem 2.5rem;
   max-width: 80%;
   line-height: 1.7;
   opacity: 0.88;
   background: rgba(5, 5, 15, 0.8);
-  padding: 2.5rem 3rem; /* More padding */
+  padding: 2.5rem 3rem;
   border-radius: 30px;
   backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 220, 255, 0.15);
@@ -97,7 +94,6 @@ h1::after {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-/* BALLOON CARS */
 .balloonCar {
   height: clamp(80px, 35vw, 130px);
   width: auto;
@@ -116,40 +112,33 @@ h1::after {
   100% { transform: translateY(-200px) rotate(2deg) scale(1); opacity: 0; }
 }
 
-@keyframes motionBlur {
-  0%, 100% { 
-    filter: 
-      drop-shadow(0 12px 25px rgba(0, 0, 0, 0.8)) 
-      drop-shadow(0 0 25px rgba(255, 255, 255, 0.6))
-      drop-shadow(0 0 35px rgba(255, 200, 0, 0.4))
-      drop-shadow(2px 4px 12px rgba(0, 0, 0, 0.6)); 
-  }
-  50% { 
-    filter: 
-      drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9)) 
-      drop-shadow(0 0 40px rgba(255, 255, 255, 0.8))  /* Much brighter */
-      drop-shadow(0 0 50px rgba(255, 200, 0, 0.6))    /* Stronger golden */
-      drop-shadow(4px 2px 16px rgba(0, 0, 0, 0.7))
-      blur(1.5px); 
-  }
-}
-
-
 .car {
   position: absolute;
-  bottom: clamp(80px,12vw,120px);
-  right:-15%;
-  width:clamp(120px,20vw,220px);
-  height:auto;
-  animation:raceRightToLeft 12s cubic-bezier(0.23,0.12,0.34,1.1) infinite;
-  filter:drop-shadow(0 8px 20px rgba(0,0,0,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.3));
-  z-index:25;
+  bottom: clamp(80px, 12vw, 120px);
+  right: -15%;
+  width: clamp(120px, 20vw, 220px);
+  height: 55px;
+  animation: raceRightToLeft 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.3));
+  z-index: 25;
 }
-@keyframes raceRightToLeft{0%{transform:translateX(0) scale(1);opacity:0;}5%{opacity:1;}90%{transform:translateX(calc(100vw+15%)) scale(1.02);opacity:1;}95%{opacity:0.8;}100%{transform:translateX(calc(100vw+15%)) scale(1.05);opacity:0;}}
-@media (max-width:768px){.car{animation-duration:10s;bottom:clamp(60px,10vw,90px);}}
-@media (max-width:480px){.car{animation-duration:8s;width:clamp(90px,32vw,180px);}}
 
-  
+@keyframes raceRightToLeft {
+  0% { transform: translateX(0) scale(1); opacity: 0; }
+  5% { opacity: 1; }
+  90% { transform: translateX(calc(100vw + 15%)) scale(1.02); opacity: 1; }
+  95% { opacity: 0.8; }
+  100% { transform: translateX(calc(100vw + 15%)) scale(1.05); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .car { animation-duration: 10s; bottom: clamp(60px, 10vw, 90px); }
+}
+
+@media (max-width: 480px) {
+  .car { animation-duration: 8s; width: clamp(90px, 32vw, 180px); }
+}
+
 .confetti {
   position: absolute;
   width: 9px;
@@ -165,7 +154,6 @@ h1::after {
   100% { transform: translateY(120vh) rotateZ(1080deg); opacity: 0; }
 }
 
-
 .particle {
   position: absolute;
   width: 4px;
@@ -179,17 +167,15 @@ h1::after {
   100% { transform: scale(1) translate(var(--dx), var(--dy)); opacity: 0; }
 }
 
-/* BALLOON GRID */
 .balloon-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1.5rem;
   max-width: 500px;
-  margin: 3rem 0; /* More margin */
+  margin: 3rem 0;
   padding: 1rem 3rem;
 }
 
-/* MOBILE */
 @media (max-width: 480px) {
   body { padding: 2rem 1.5rem; }
   .message { margin: 2.5rem 2rem; padding: 2rem 2.5rem; }
@@ -227,7 +213,6 @@ h1::after {
   <img class="car" src="https://static.thenounproject.com/png/3880204-200.png" alt="Racing Car">
 
   <script>
-    // Stars
     function createStars() {
       const container = document.getElementById('stars');
       for (let i = 0; i < 60; i++) {
@@ -241,7 +226,6 @@ h1::after {
       }
     }
 
-    // Confetti
     function createConfetti() {
       for (let i = 0; i < 40; i++) {
         setTimeout(() => {
@@ -257,7 +241,6 @@ h1::after {
       }
     }
 
-    // Particles
     function createParticleBurst(x, y) {
       for (let i = 0; i < 12; i++) {
         const p = document.createElement('div');
@@ -272,7 +255,6 @@ h1::after {
       }
     }
 
-    // Initialize
     window.addEventListener('load', () => {
       createStars();
       createConfetti();
