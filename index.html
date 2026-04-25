@@ -140,56 +140,7 @@ h1::after {
 }
 
 /* REVERSED CAR ANIMATION */
-.car {
-  position: absolute;
-  bottom: clamp(80px, 12vw, 120px);
-  left: -15%;
-  width: clamp(100px, 28vw, 220px);
-  height: auto;
-  aspect-ratio: 2.2 / 1;
-  animation: 
-    raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite,
-    motionBlur 0.3s ease-in-out infinite alternate;
-  
-  /* Enhanced visibility for dark backgrounds */
-  filter: 
-    drop-shadow(0 12px 25px rgba(0, 0, 0, 0.8))  /* Stronger ground shadow */
-    drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)) /* Brighter glow */
-    drop-shadow(0 0 35px rgba(255, 200, 0, 0.4))   /* Golden rim light */
-    drop-shadow(2px 4px 12px rgba(0, 0, 0, 0.6));   /* Side shadow */
-    
-  z-index: 25;
-  will-change: transform, filter;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
 
-/* Enhanced keyframe animation */
-@keyframes raceLeftToRight {
-  0% {
-    transform: translateX(0) translateZ(0) scale(1);
-    opacity: 0;
-    filter: 
-      drop-shadow(0 12px 25px rgba(0, 0, 0, 0.8))
-      drop-shadow(0 0 25px rgba(255, 255, 255, 0.6))
-      drop-shadow(0 0 35px rgba(255, 200, 0, 0.4))
-      drop-shadow(2px 4px 12px rgba(0, 0, 0, 0.6));
-  }
-  5% {
-    opacity: 1;
-  }
-  90% {
-    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.02);
-    opacity: 1;
-  }
-  95% {
-    opacity: 0.9; /* Slightly higher fade out */
-  }
-  100% {
-    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.05);
-    opacity: 0;
-  }
-}
 
 /* Enhanced motion blur with better visibility */
 @keyframes motionBlur {
@@ -211,35 +162,52 @@ h1::after {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-  .car {
-    animation: 
-      raceLeftToRight 10s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite,
-      motionBlur 0.25s ease-in-out infinite alternate;
-    bottom: clamp(60px, 10vw, 90px);
+.car {
+  position: absolute;
+  bottom: clamp(80px, 12vw, 120px);
+  left: -15%;
+  width: clamp(100px, 28vw, 220px);
+  height: auto;
+  aspect-ratio: 2.2 / 1;
+  animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
+  
+  /* Just brighter glow - minimal change */
+  filter: 
+    drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 25px rgba(255, 255, 255, 0.5))  /* Brighter white glow */
+    drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.4));
     
-    /* Extra boost for mobile dark backgrounds */
-    filter: 
-      drop-shadow(0 10px 20px rgba(0, 0, 0, 0.85))
-      drop-shadow(0 0 30px rgba(255, 255, 255, 0.7))
-      drop-shadow(0 0 45px rgba(255, 200, 0, 0.5))
-      drop-shadow(3px 3px 12px rgba(0, 0, 0, 0.7));
+  z-index: 25;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes raceLeftToRight {
+  0% {
+    transform: translateX(0) translateZ(0) scale(1);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.02);
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.05);
+    opacity: 0;
   }
 }
 
-@media (max-width: 480px) {
-  .car {
-    animation: 
-      raceLeftToRight 8s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite,
-      motionBlur 0.2s ease-in-out infinite alternate;
-    width: clamp(90px, 32vw, 180px);
-  }
-}
-
-/* Responsive adjustments */
+/* Responsive - same as original */
 @media (max-width: 768px) {
   .car {
-    animation-duration: 10s; /* Faster on mobile */
+    animation-duration: 10s;
     bottom: clamp(60px, 10vw, 90px);
   }
 }
@@ -249,12 +217,6 @@ h1::after {
     animation-duration: 8s;
     width: clamp(90px, 32vw, 180px);
   }
-}
-
-/* Optional: Add motion blur effect for speed */
-@keyframes motionBlur {
-  0%, 100% { filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.3)); }
-  50% { filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8)) drop-shadow(0 0 25px rgba(255,255,255,0.4)) blur(1px); }
 }
 
 /* Usage: Add to .car class if desired */
