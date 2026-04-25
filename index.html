@@ -140,21 +140,26 @@ h1::after {
   right: -15%;
   width: clamp(120px, 20vw, 220px);
   height: auto;
-  aspect-ratio: 2.2/1;
   animation: raceRightToLeft 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
   filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.3)) drop-shadow(2px 4px 8px rgba(0,0,0,0.4));
   z-index: 25;
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
 }
 
 @keyframes raceRightToLeft {
-  0% { transform: translateX(0) translateZ(0) scale(1); opacity: 0; }
+  0% { 
+    transform: translateX(0) scale(1);
+    opacity: 0; 
+  }
   5% { opacity: 1; }
-  90% { transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.02); opacity: 1; }
+  90% { 
+    transform: translateX(calc(100vw + 15%)) scale(1.02);
+    opacity: 1; 
+  }
   95% { opacity: 0.8; }
-  100% { transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.05); opacity: 0; }
+  100% { 
+    transform: translateX(calc(100vw + 15%)) scale(1.05);
+    opacity: 0; 
+  }
 }
 
 @media (max-width: 768px) {
@@ -164,6 +169,7 @@ h1::after {
 @media (max-width: 480px) {
   .car { animation-duration: 8s; width: clamp(90px, 32vw, 180px); }
 }
+
   
 .confetti {
   position: absolute;
