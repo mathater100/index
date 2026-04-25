@@ -142,29 +142,68 @@ h1::after {
 /* REVERSED CAR ANIMATION */
 .car {
   position: absolute;
-  bottom: 120px;
-  left: 0;
-  width: clamp(120px, 34vw, 190px);
+  bottom: clamp(80px, 12vw, 120px); /* More responsive bottom positioning */
+  left: -15%; /* Start slightly off-screen for smoother entrance */
+  width: clamp(100px, 28vw, 220px); /* Slightly wider responsive range */
   height: auto;
-  animation: raceLeftToRight 14s cubic-bezier(0.25, 0.8, 0.25, 1) infinite;
-  filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
-  z-index: 20;
+  aspect-ratio: 2.2 / 1; /* Maintain consistent proportions */
+  animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
+  filter: 
+    drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))
+    drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.4));
+  z-index: 25;
+  will-change: transform; /* Optimize for animation performance */
+  transform: translateZ(0); /* Hardware acceleration */
+  backface-visibility: hidden; /* Prevent flickering */
 }
 
+/* Enhanced keyframe animation */
 @keyframes raceLeftToRight {
   0% {
-    transform: translateX(-25vw) scaleX(0.9) rotateY(0deg);
+    transform: translateX(0) translateZ(0) scale(1);
     opacity: 0;
   }
-  8% { opacity: 1; }
-  92% { opacity: 1; }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.02);
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.8;
+  }
   100% {
-    transform: translateX(125vw) scaleX(1.05) rotateY(180deg);
+    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.05);
     opacity: 0;
   }
 }
 
-/* CONFETTI */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .car {
+    animation-duration: 10s; /* Faster on mobile */
+    bottom: clamp(60px, 10vw, 90px);
+  }
+}
+
+@media (max-width: 480px) {
+  .car {
+    animation-duration: 8s;
+    width: clamp(90px, 32vw, 180px);
+  }
+}
+
+/* Optional: Add motion blur effect for speed */
+@keyframes motionBlur {
+  0%, 100% { filter: drop-shadow(0 8px 20px rgba(0,0,0,0.6)) drop-shadow(0 0 15px rgba(255,255,255,0.3)); }
+  50% { filter: drop-shadow(0 4px 12px rgba(0,0,0,0.8)) drop-shadow(0 0 25px rgba(255,255,255,0.4)) blur(1px); }
+}
+
+/* Usage: Add to .car class if desired */
+/* animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite, motionBlur 0.3s ease-in-out infinite alternate; */
+  /* CONFETTI */
 .confetti {
   position: absolute;
   width: 9px;
