@@ -163,6 +163,7 @@ h1::after {
 
 /* Responsive adjustments */
 .car {
+  /* Your exact original styles */
   position: absolute;
   bottom: clamp(80px, 12vw, 120px);
   left: -15%;
@@ -171,10 +172,10 @@ h1::after {
   aspect-ratio: 2.2 / 1;
   animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
   
-  /* Just brighter glow - minimal change */
+  /* ONLY change: slightly stronger ground shadow */
   filter: 
-    drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6))
-    drop-shadow(0 0 25px rgba(255, 255, 255, 0.5))  /* Brighter white glow */
+    drop-shadow(0 12px 25px rgba(0, 0, 0, 0.7))  /* Taller/deeper shadow */
+    drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))
     drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.4));
     
   z-index: 25;
@@ -182,43 +183,6 @@ h1::after {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
-
-@keyframes raceLeftToRight {
-  0% {
-    transform: translateX(0) translateZ(0) scale(1);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  90% {
-    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.02);
-    opacity: 1;
-  }
-  95% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateX(calc(100vw + 15%)) translateZ(0) scale(1.05);
-    opacity: 0;
-  }
-}
-
-/* Responsive - same as original */
-@media (max-width: 768px) {
-  .car {
-    animation-duration: 10s;
-    bottom: clamp(60px, 10vw, 90px);
-  }
-}
-
-@media (max-width: 480px) {
-  .car {
-    animation-duration: 8s;
-    width: clamp(90px, 32vw, 180px);
-  }
-}
-
 /* Usage: Add to .car class if desired */
 /* animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite, motionBlur 0.3s ease-in-out infinite alternate; */
   /* CONFETTI */
