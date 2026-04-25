@@ -37,29 +37,6 @@ body {
   50% { background-position: 100% 50%; }
 }
 
-/* STARFIELD - Subtler */
-/* .stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.star {
-  position: absolute;
-  background: rgba(200, 200, 255, 0.4);
-  border-radius: 50%;
-  animation: twinkle 4s infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.1; transform: scale(0.8); }
-  50% { opacity: 0.5; transform: scale(1.2); }
-} */
-
-/* GLOW EFFECT - Softer */
 .glow {
   text-shadow: 
     0 0 12px rgba(0, 220, 255, 0.6),
@@ -139,10 +116,6 @@ h1::after {
   100% { transform: translateY(-200px) rotate(2deg) scale(1); opacity: 0; }
 }
 
-/* REVERSED CAR ANIMATION */
-
-
-/* Enhanced motion blur with better visibility */
 @keyframes motionBlur {
   0%, 100% { 
     filter: 
@@ -161,15 +134,14 @@ h1::after {
   }
 }
 
-/* Responsive adjustments */
 .car {
   position: absolute;
   bottom: clamp(80px, 12vw, 120px);
-  left: -15%;
-  width: clamp(120px, 22vw, 280px);
+  right: -15%;  /* Fixed: Right side start */
+  width: clamp(140px, 20vw, 300px);  /* Fixed: Perfect width */
   height: auto;
   aspect-ratio: 2.2 / 1;
-  animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
+  animation: raceRightToLeft 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite;
   filter: 
     drop-shadow(0 8px 20px rgba(0, 0, 0, 0.6))
     drop-shadow(0 0 15px rgba(255, 255, 255, 0.3))
@@ -179,7 +151,6 @@ h1::after {
   transform: translateZ(0);
   backface-visibility: hidden;
 }
-/* Rest unchanged */
 
 @keyframes raceLeftToRight {
   0% { transform: translateX(0) translateZ(0) scale(1); opacity: 0; }
@@ -196,12 +167,6 @@ h1::after {
 @media (max-width: 480px) {
   .car { animation-duration: 8s; width: clamp(90px, 32vw, 180px); }
 }
-
-/* Usage: Add to .car class if desired /
-/ animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite, motionBlur 0.3s ease-in-out infinite alternate; */
-/* Usage: Add to .car class if desired */
-/* animation: raceLeftToRight 12s cubic-bezier(0.23, 0.12, 0.34, 1.1) infinite, motionBlur 0.3s ease-in-out infinite alternate; */
-  /* CONFETTI */
 .confetti {
   position: absolute;
   width: 9px;
@@ -217,7 +182,7 @@ h1::after {
   100% { transform: translateY(120vh) rotateZ(1080deg); opacity: 0; }
 }
 
-/* PARTICLES */
+
 .particle {
   position: absolute;
   width: 4px;
